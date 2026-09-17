@@ -186,6 +186,30 @@ async def serve_index():
     raise HTTPException(status_code=404, detail="index.html not found")
 
 
+@app.api_route("/favicon.ico", methods=["GET", "HEAD"], include_in_schema=False)
+async def favicon_ico():
+    ico_path = os.path.join(os.path.dirname(__file__), "favicon.ico")
+    if os.path.exists(ico_path):
+        return FileResponse(ico_path, media_type="image/x-icon")
+    raise HTTPException(status_code=404)
+
+
+@app.api_route("/favicon.png", methods=["GET", "HEAD"], include_in_schema=False)
+async def favicon_png():
+    png_path = os.path.join(os.path.dirname(__file__), "favicon.png")
+    if os.path.exists(png_path):
+        return FileResponse(png_path, media_type="image/png")
+    raise HTTPException(status_code=404)
+
+
+@app.api_route("/apple-touch-icon.png", methods=["GET", "HEAD"], include_in_schema=False)
+async def apple_touch_icon():
+    apple_path = os.path.join(os.path.dirname(__file__), "apple-touch-icon.png")
+    if os.path.exists(apple_path):
+        return FileResponse(apple_path, media_type="image/png")
+    raise HTTPException(status_code=404)
+
+
 if __name__ == "__main__":
     import uvicorn
     is_dev = settings.environment.lower() == "development"
