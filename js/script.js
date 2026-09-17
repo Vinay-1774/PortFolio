@@ -78,17 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initTheme() {
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const savedTheme = localStorage.getItem('vpr-theme');
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const toggle = document.getElementById('theme-toggle');
+  const saved = localStorage.getItem('vpr-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let current = saved || (prefersDark ? 'dark' : 'light');
 
-  let currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-  document.documentElement.setAttribute('data-theme', currentTheme);
-
-  themeToggleBtn.addEventListener('click', () => {
-    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    localStorage.setItem('vpr-theme', currentTheme);
+  document.documentElement.setAttribute('data-theme', current);
+  toggle?.addEventListener('click', () => {
+    current = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', current);
+    localStorage.setItem('vpr-theme', current);
   });
 }
 
@@ -98,106 +97,68 @@ function initHeaderScroll() {
   const sections = document.querySelectorAll('section[id]');
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      header.style.boxShadow = 'var(--shadow-sm)';
-    } else {
-      header.style.boxShadow = 'none';
-    }
-
-    let currentSection = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
-      const sectionHeight = section.offsetHeight;
-      if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-        currentSection = section.getAttribute('id');
+    header.style.boxShadow = window.scrollY > 20 ? 'var(--shadow-sm)' : 'none';
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 100 && window.scrollY < sec.offsetTop - 100 + sec.offsetHeight) {
+        current = sec.id;
       }
     });
-
     navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${currentSection}`) {
-        link.classList.add('active');
-      }
+      link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
     });
   });
 }
 
 function initMobileNav() {
-  const navToggle = document.getElementById('nav-toggle');
-  const navMenu = document.getElementById('nav-menu');
-  const navLinks = document.querySelectorAll('.nav-link');
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  if (!toggle || !menu) return;
 
-  if (!navToggle || !navMenu) return;
-
-  navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('open');
-  });
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('open');
-    });
+  toggle.addEventListener('click', () => menu.classList.toggle('open'));
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => menu.classList.remove('open'));
   });
 }
 
 function initProjectFilters() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.project-card');
 
-  filterBtns.forEach(btn => {
+  buttons.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+      buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
 
-      const filterValue = btn.getAttribute('data-filter');
-
-      projectCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filterValue === 'all' || category === filterValue) {
-          card.style.display = 'flex';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 50);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(10px)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 200);
-        }
+      cards.forEach(card => {
+        const show = filter === 'all' || card.getAttribute('data-category') === filter;
+        card.style.display = show ? 'flex' : 'none';
+        card.style.opacity = show ? '1' : '0';
       });
     });
   });
 }
 
 function initProjectModal() {
-  const modalBackdrop = document.getElementById('project-modal');
-  const modalCloseBtn = document.getElementById('modal-close-btn');
+  const backdrop = document.getElementById('project-modal');
+  const closeBtn = document.getElementById('modal-close-btn');
 
-  const projectCards = document.querySelectorAll('.project-card');
-
-  projectCards.forEach(card => {
+  document.querySelectorAll('.project-card').forEach(card => {
     const openBtn = card.querySelector('.open-modal-btn');
-    const projectId = card.getAttribute('data-project');
-
-    if (openBtn) {
-      openBtn.addEventListener('click', () => {
-        const data = PROJECT_DATA[projectId];
-        if (data) {
-          renderProjectModalContent(data);
-          openModal(modalBackdrop);
-        }
-      });
-    }
+    const id = card.getAttribute('data-project');
+    openBtn?.addEventListener('click', () => {
+      const data = PROJECT_DATA[id];
+      if (data) {
+        renderProjectModalContent(data);
+        openModal(backdrop);
+      }
+    });
   });
 
-  if (modalCloseBtn) {
-    modalCloseBtn.addEventListener('click', () => closeModal(modalBackdrop));
-  }
-
-  modalBackdrop.addEventListener('click', (e) => {
-    if (e.target === modalBackdrop) closeModal(modalBackdrop);
+  closeBtn?.addEventListener('click', () => closeModal(backdrop));
+  backdrop?.addEventListener('click', (e) => {
+    if (e.target === backdrop) closeModal(backdrop);
   });
 }
 
@@ -237,42 +198,29 @@ function renderProjectModalContent(data) {
 }
 
 function initResumeModal() {
-  const resumeModal = document.getElementById('resume-modal');
-  const openResumeNavBtn = document.getElementById('open-resume-btn');
-  const heroResumeBtn = document.getElementById('hero-resume-btn');
-  const resumeCloseBtn = document.getElementById('resume-close-btn');
-  const downloadBtn = document.getElementById('download-resume-file');
+  const modal = document.getElementById('resume-modal');
+  const triggers = [
+    document.getElementById('open-resume-btn'),
+    document.getElementById('hero-resume-btn')
+  ].filter(Boolean);
 
-  const triggers = [openResumeNavBtn, heroResumeBtn].filter(Boolean);
-
-  triggers.forEach(btn => {
-    btn.addEventListener('click', () => openModal(resumeModal));
+  triggers.forEach(btn => btn.addEventListener('click', () => openModal(modal)));
+  document.getElementById('resume-close-btn')?.addEventListener('click', () => closeModal(modal));
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal(modal);
   });
-
-  if (resumeCloseBtn) {
-    resumeCloseBtn.addEventListener('click', () => closeModal(resumeModal));
-  }
-
-  resumeModal.addEventListener('click', (e) => {
-    if (e.target === resumeModal) closeModal(resumeModal);
-  });
-
-  if (downloadBtn) {
-    downloadBtn.addEventListener('click', () => {
-      window.print();
-    });
-  }
+  document.getElementById('download-resume-file')?.addEventListener('click', () => window.print());
 }
 
-function openModal(modalEl) {
-  modalEl.classList.add('open');
-  modalEl.setAttribute('aria-hidden', 'false');
+function openModal(el) {
+  el?.classList.add('open');
+  el?.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 }
 
-function closeModal(modalEl) {
-  modalEl.classList.remove('open');
-  modalEl.setAttribute('aria-hidden', 'true');
+function closeModal(el) {
+  el?.classList.remove('open');
+  el?.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
 }
 
@@ -280,14 +228,10 @@ function initCopyEmail() {
   const copyBtn = document.getElementById('copy-email-btn');
   const email = 'vinaypratap4017@gmail.com';
 
-  if (!copyBtn) return;
-
-  copyBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(email).then(() => {
-      showToast('Copied email to clipboard!');
-    }).catch(() => {
-      showToast('Email: vinaypratap4017@gmail.com');
-    });
+  copyBtn?.addEventListener('click', () => {
+    navigator.clipboard.writeText(email)
+      .then(() => showToast('Copied email to clipboard!'))
+      .catch(() => showToast(`Email: ${email}`));
   });
 }
 
@@ -295,47 +239,40 @@ function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalBtnText = submitBtn.innerHTML;
-
+    const btn = form.querySelector('button[type="submit"]');
+    const origText = btn.innerHTML;
     const name = form.name.value.trim();
     const email = form.email.value.trim();
     const subject = form.subject.value.trim();
     const message = form.message.value.trim();
 
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `Sending email...`;
+    btn.disabled = true;
+    btn.innerHTML = 'Sending email...';
 
-    const payload = { name, email, subject, message };
-
-    fetch('/api/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          showToast(`Thank you, ${name}! Your email has been sent.`);
-          form.reset();
-        } else {
-          throw new Error(data.error || 'Server error sending email');
-        }
-      })
-      .catch(err => {
-        console.warn('Resend backend error, using email client fallback:', err);
-        showToast(`Redirecting to email client...`);
-        window.location.href = `mailto:vinaypratap4017@gmail.com?subject=${encodeURIComponent('[Portfolio Contact] ' + subject)}&body=${encodeURIComponent(message)}`;
-        form.reset();
-      })
-      .finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnText;
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message })
       });
+      const data = await res.json();
+      if (data.success) {
+        showToast(`Thank you, ${name}! Your email has been sent.`);
+        form.reset();
+      } else {
+        throw new Error(data.error || 'Server error sending email');
+      }
+    } catch (err) {
+      console.warn('Resend backend error, using email client fallback:', err);
+      showToast('Redirecting to email client...');
+      window.location.href = `mailto:vinaypratap4017@gmail.com?subject=${encodeURIComponent('[Portfolio Contact] ' + subject)}&body=${encodeURIComponent(message)}`;
+      form.reset();
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = origText;
+    }
   });
 }
 
@@ -349,7 +286,6 @@ function showToast(message) {
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     <span>${escapeHtml(message)}</span>
   `;
-
   container.appendChild(toast);
 
   setTimeout(() => {
