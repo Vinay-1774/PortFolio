@@ -20,7 +20,7 @@ logger = logging.getLogger("portfolio")
 
 
 class Settings(BaseSettings):
-    resend_api_key: str = Field(default="re_xxxxxxxxx", alias="RESEND_API_KEY")
+    resend_api_key: str = Field(..., alias="RESEND_API_KEY")
     recipient_email: EmailStr = Field(..., alias="RECIPIENT_EMAIL")
     port: int = Field(default=8000, alias="PORT")
     host: str = Field(default="0.0.0.0", alias="HOST")
@@ -100,7 +100,7 @@ async def get_http_client() -> httpx.AsyncClient:
 
 async def dispatch_resend(to: str, subject: str, html: str, reply_to: Optional[str] = None):
     api_key = settings.resend_api_key.strip()
-    if not api_key or api_key == "re_xxxxxxxxx":
+    if not api_key:
         logger.error("Resend API key is missing or unconfigured in .env")
         return JSONResponse(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
