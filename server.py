@@ -121,15 +121,6 @@ async def send_email(payload: ContactMessageRequest):
     )
 
 
-@app.post("/api/test-email")
-async def test_email_endpoint():
-    return await dispatch_resend(
-        to=settings.recipient_email,
-        subject="Hello World",
-        html="<p>Congrats on sending your <strong>first email</strong>!</p>"
-    )
-
-
 if os.path.exists("css"):
     app.mount("/css", StaticFiles(directory="css"), name="css")
 
