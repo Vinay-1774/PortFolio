@@ -177,6 +177,9 @@ if os.path.exists("css"):
 if os.path.exists("js"):
     app.mount("/js", StaticFiles(directory="js"), name="js")
 
+if os.path.exists("images"):
+    app.mount("/images", StaticFiles(directory="images"), name="images")
+
 
 @app.api_route("/", methods=["GET", "HEAD"])
 async def serve_index():

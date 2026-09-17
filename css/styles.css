@@ -172,17 +172,36 @@ h1, h2, h3, h4 {
 }
 
 .brand-logo {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text-main);
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  text-decoration: none;
 }
 
-.brand-dot {
-  color: var(--accent-highlight);
-  font-weight: 700;
+.brand-logo-img {
+  height: 38px;
+  width: auto;
+  display: block;
+  transition: transform var(--transition-fast);
+}
+
+.brand-logo:hover .brand-logo-img {
+  transform: scale(1.05);
+}
+
+.brand-logo .logo-dark {
+  display: none;
+}
+
+.brand-logo .logo-light {
+  display: block;
+}
+
+[data-theme="dark"] .brand-logo .logo-dark {
+  display: block;
+}
+
+[data-theme="dark"] .brand-logo .logo-light {
+  display: none;
 }
 
 .nav-list {

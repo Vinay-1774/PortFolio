@@ -39,6 +39,9 @@ The application will be available at `http://localhost:8000`.
 ├── server.py
 ├── css/
 │   └── styles.css
+├── images/
+│   ├── logo-dark.png
+│   └── logo-light.png
 └── js/
     └── script.js
 ```
