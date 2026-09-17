@@ -1,3 +1,5 @@
+import html
+import logging
 import os
 from contextlib import asynccontextmanager
 from typing import Optional
@@ -9,13 +11,21 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, EmailStr, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.util import get_remote_address
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("portfolio")
 
 
 class Settings(BaseSettings):
     resend_api_key: str = Field(default="re_xxxxxxxxx", alias="RESEND_API_KEY")
-    recipient_email: str = Field(default="vinaypratap4017@gmail.com", alias="RECIPIENT_EMAIL")
+    recipient_email: EmailStr = Field(..., alias="RECIPIENT_EMAIL")
     port: int = Field(default=8000, alias="PORT")
     host: str = Field(default="0.0.0.0", alias="HOST")
+    environment: str = Field(default="production", alias="ENVIRONMENT")
+    allowed_origins: str = Field(default="https://vinaypratap.dev", alias="ALLOWED_ORIGINS")
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
@@ -37,15 +47,37 @@ async def lifespan(app: FastAPI):
     await app.state.http_client.aclose()
 
 
+limiter = Limiter(key_func=get_remote_address)
 app = FastAPI(title="Portfolio API", version="1.0.0", lifespan=lifespan)
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
+origins_list = [origin.strip() for origin in settings.allowed_origins.split(",") if origin.strip()]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=origins_list,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next):
+    response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    if request.url.scheme == "https" or request.headers.get("x-forwarded-proto") == "https":
+        response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+    response.headers["Content-Security-Policy"] = (
+        "default-src 'self'; "
+        "font-src 'self' https://fonts.gstatic.com; "
+        "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; "
+        "script-src 'self'; "
+        "connect-src 'self'; "
+        "img-src 'self' data:;"
+    )
+    return response
 
 
 @app.exception_handler(RequestValidationError)
@@ -59,12 +91,20 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     )
 
 
+async def get_http_client() -> httpx.AsyncClient:
+    client = getattr(app.state, "http_client", None)
+    if client is None or client.is_closed:
+        app.state.http_client = httpx.AsyncClient(timeout=10.0)
+    return app.state.http_client
+
+
 async def dispatch_resend(to: str, subject: str, html: str, reply_to: Optional[str] = None):
     api_key = settings.resend_api_key.strip()
     if not api_key or api_key == "re_xxxxxxxxx":
+        logger.error("Resend API key is missing or unconfigured in .env")
         return JSONResponse(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            content={"success": False, "error": "RESEND_API_KEY is missing or unconfigured in .env"}
+            content={"success": False, "error": "Failed to send message, please try again later."}
         )
 
     payload = {
@@ -77,7 +117,8 @@ async def dispatch_resend(to: str, subject: str, html: str, reply_to: Optional[s
         payload["reply_to"] = reply_to
 
     try:
-        response = await app.state.http_client.post(
+        client = await get_http_client()
+        response = await client.post(
             "https://api.resend.com/emails",
             json=payload,
             headers={
@@ -88,14 +129,16 @@ async def dispatch_resend(to: str, subject: str, html: str, reply_to: Optional[s
         )
         if response.status_code in (200, 201):
             return {"success": True, "message": "Email dispatched successfully", "data": response.json()}
+        logger.error(f"Resend API error ({response.status_code}): {response.text}")
         return JSONResponse(
             status_code=response.status_code,
-            content={"success": False, "error": response.text}
+            content={"success": False, "error": "Failed to send message, please try again later."}
         )
     except httpx.RequestError as exc:
+        logger.error(f"Failed to connect to email service provider: {exc}", exc_info=True)
         return JSONResponse(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            content={"success": False, "error": str(exc)}
+            content={"success": False, "error": "Failed to send message, please try again later."}
         )
 
 
@@ -105,18 +148,25 @@ async def health_check():
 
 
 @app.post("/api/send-email")
-async def send_email(payload: ContactMessageRequest):
-    html = f"""<div style="font-family: Arial, sans-serif; padding: 20px; color: #111;">
+@limiter.limit("5/minute")
+async def send_email(request: Request, payload: ContactMessageRequest):
+    clean_name = html.escape(payload.name)
+    clean_email = html.escape(str(payload.email))
+    clean_subject = html.escape(payload.subject)
+    clean_message = html.escape(payload.message)
+
+    html_content = f"""<div style="font-family: Arial, sans-serif; padding: 20px; color: #111;">
       <h2 style="color: #2563eb; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px;">New Contact Message</h2>
-      <p><strong>Sender:</strong> {payload.name} ({payload.email})</p>
-      <p><strong>Subject:</strong> {payload.subject}</p>
+      <p><strong>Sender:</strong> {clean_name} ({clean_email})</p>
+      <p><strong>Subject:</strong> {clean_subject}</p>
       <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 16px 0;" />
-      <div style="background: #f9fafb; padding: 12px; border-radius: 6px; white-space: pre-wrap;">{payload.message}</div>
+      <div style="background: #f9fafb; padding: 12px; border-radius: 6px; white-space: pre-wrap;">{clean_message}</div>
     </div>"""
+
     return await dispatch_resend(
         to=settings.recipient_email,
-        subject=f"[Portfolio Contact] {payload.subject}",
-        html=html,
+        subject=f"[Portfolio Contact] {clean_subject}",
+        html=html_content,
         reply_to=payload.email
     )
 
@@ -138,4 +188,5 @@ async def serve_index():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("server:app", host=settings.host, port=settings.port, reload=True)
+    is_dev = settings.environment.lower() == "development"
+    uvicorn.run("server:app", host=settings.host, port=settings.port, reload=is_dev)
