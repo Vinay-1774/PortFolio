@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vinay Pratap Raghuwanshi — AI Engineer & Backend Developer. Portfolio featuring FastAPI REST APIs, WebSockets, RAG, and scalable backend architectures.">
+  <meta name="author" content="Vinay Pratap Raghuwanshi">
+  <meta property="og:title" content="Vinay Pratap Raghuwanshi | AI Engineer & Backend Developer">
+  <meta property="og:description" content="AI & Backend Developer specializing in scalable REST APIs, real-time WebSockets systems, Python, FastAPI, PostgreSQL, and LLM applications.">
+  <meta property="og:type" content="website">
+
+  <title>Vinay Pratap Raghuwanshi — AI Engineer & Backend Developer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#hero" class="brand-logo" aria-label="Vinay Pratap Raghuwanshi Home">
+        <span class="brand-name">Vinay Pratap</span>
+        <span class="brand-dot">.</span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#certifications" class="nav-link">Certifications</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle" class="btn-icon" aria-label="Toggle dark/light theme" title="Toggle theme">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <button id="open-resume-btn" class="btn btn-outline btn-sm">Resume</button>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+        <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge animate-fade-in">
+            <span class="status-indicator"></span>
+            <span>B.Tech Electronics &amp; Telecommunication &bull; IET DAVV Indore (2024–2028)</span>
+          </div>
+
+          <h1 class="hero-title animate-slide-up">
+            Hi, I'm <span class="highlight-text">Vinay</span>.
+          </h1>
+
+          <p class="hero-subtitle animate-slide-up-delay-1">
+            AI Engineer &amp; Backend Developer
+          </p>
+
+          <p class="hero-description animate-slide-up-delay-2">
+            AI &amp; Backend Developer with hands-on experience in building scalable REST APIs, real-time systems, and database-driven applications using Python, FastAPI, PostgreSQL, and WebSockets. Passionate about building intelligent, scalable, and production-ready software solutions.
+          </p>
+
+          <div class="hero-actions animate-slide-up-delay-3">
+            <a href="#projects" class="btn btn-primary">
+              View My Work
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <button id="hero-resume-btn" class="btn btn-secondary">
+              Download Resume
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            </button>
+          </div>
+
+          <div class="hero-socials animate-slide-up-delay-4">
+            <a href="https://github.com/Vinay-1774" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub profile">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://linkedin.com/in/vinaypratap1774" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn profile">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 1-2-2 2 2 0 0 1-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="mailto:vinaypratap4017@gmail.com" class="social-link" title="Email Vinay">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>vinaypratap4017@gmail.com</span>
+            </a>
+            <a href="tel:+919179241217" class="social-link" title="Call Vinay">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>+91-9179241217</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">01</span>
+          <h2 class="section-title">About &amp; Summary</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p class="lead-text">
+              Building intelligent, scalable, and production-ready software solutions with a strong foundation in backend architecture and real-time systems.
+            </p>
+            <p>
+              I am an AI &amp; Backend Developer with hands-on experience in building scalable REST APIs, real-time systems, and database-driven applications using Python, FastAPI, PostgreSQL, and WebSockets.
+            </p>
+            <p>
+              My background includes a strong foundation in backend architecture, asynchronous programming, and system design, with a growing focus on LLMs, Retrieval-Augmented Generation (RAG), and AI-powered applications.
+            </p>
+
+            <div class="principles-grid">
+              <div class="principle-card">
+                <div class="principle-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                </div>
+                <h3>Backend Architecture</h3>
+                <p>Designing RESTful APIs, WebSockets, OAuth2/JWT authentication, session management, and asynchronous connection handling.</p>
+              </div>
+
+              <div class="principle-card">
+                <div class="principle-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                </div>
+                <h3>AI &amp; LLM Systems</h3>
+                <p>Applying prompt engineering, embeddings, RAG concepts, vector search, and semantic search in modern Python backend stacks.</p>
+              </div>
+            </div>
+          </div>
+
+                    <div class="about-sidebar">
+            <div class="sidebar-card">
+              <span class="card-label">EDUCATION</span>
+              <h3 class="card-title">B.Tech — Electronics &amp; Telecommunication</h3>
+              <p class="institution-name">Institute of Engineering &amp; Technology (IET), DAVV</p>
+              <p class="location-tag">Indore, Madhya Pradesh, India</p>
+              <div class="card-timeline">2024 &mdash; 2028</div>
+
+              <hr class="card-divider">
+
+              <span class="card-label">CURRENT ROLE</span>
+              <h4 class="subcard-title">Independent Backend &amp; AI Developer</h4>
+              <div class="card-timeline">2025 &mdash; Present</div>
+              <ul class="focus-list" style="margin-top: 0.75rem;">
+                <li>Developed &amp; deployed FastAPI backend &amp; AI apps.</li>
+                <li>Built reusable auth &amp; CRUD modules (reduced dev time by 25%).</li>
+                <li>Docker containerization &amp; Git clean architecture.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section class="section bg-subtle" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">02</span>
+          <h2 class="section-title">Technical Skills</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="skills-grid">
+                    <div class="skill-category">
+            <div class="category-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              <h3>Programming</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="tag tag-highlight">Python</span>
+              <span class="tag tag-highlight">C++</span>
+              <span class="tag tag-highlight">SQL</span>
+              <span class="tag">Java</span>
+              <span class="tag">Bash</span>
+            </div>
+          </div>
+
+                    <div class="skill-category">
+            <div class="category-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect></svg>
+              <h3>Backend</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="tag tag-highlight">FastAPI</span>
+              <span class="tag tag-highlight">REST APIs</span>
+              <span class="tag tag-highlight">WebSockets</span>
+              <span class="tag">Async Programming</span>
+              <span class="tag">Pydantic</span>
+              <span class="tag">Uvicorn</span>
+            </div>
+          </div>
+
+                    <div class="skill-category">
+            <div class="category-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+              <h3>AI / LLM</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="tag tag-highlight">Prompt Engineering</span>
+              <span class="tag tag-highlight">RAG (Learning)</span>
+              <span class="tag">Embeddings</span>
+              <span class="tag">Vector Search Concepts</span>
+              <span class="tag">Semantic Search</span>
+            </div>
+          </div>
+
+                    <div class="skill-category">
+            <div class="category-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+              <h3>Databases</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="tag tag-highlight">PostgreSQL</span>
+              <span class="tag tag-highlight">Redis</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">SQLite</span>
+            </div>
+          </div>
+
+                    <div class="skill-category">
+            <div class="category-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <h3>Authentication &amp; Security</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="tag tag-highlight">JWT</span>
+              <span class="tag tag-highlight">OAuth2</span>
+              <span class="tag">RBAC</span>
+              <span class="tag">Password Hashing</span>
+              <span class="tag">Session Management</span>
+            </div>
+          </div>
+
+                    <div class="skill-category">
+            <div class="category-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+              <h3>Tools &amp; Platforms</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="tag tag-highlight">Git</span>
+              <span class="tag tag-highlight">GitHub</span>
+              <span class="tag tag-highlight">Docker</span>
+              <span class="tag">Linux</span>
+              <span class="tag">Postman</span>
+              <span class="tag">PgAdmin</span>
+              <span class="tag">Vercel</span>
+              <span class="tag">n8n</span>
+              <span class="tag">VS Code</span>
+            </div>
+          </div>
+
+                    <div class="skill-category">
+            <div class="category-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              <h3>Libraries</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="tag tag-highlight">SQLAlchemy</span>
+              <span class="tag">Alembic</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Matplotlib</span>
+            </div>
+          </div>
+
+                    <div class="skill-category">
+            <div class="category-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+              <h3>Core Concepts</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="tag tag-highlight">Data Structures &amp; Algorithms</span>
+              <span class="tag">OOP</span>
+              <span class="tag">API Design</span>
+              <span class="tag">Database Design</span>
+              <span class="tag">Database Indexing</span>
+              <span class="tag">Caching</span>
+              <span class="tag">System Design Fundamentals</span>
+              <span class="tag">Scalable Backend Architecture</span>
+              <span class="tag">Client-Server Architecture</span>
+              <span class="tag">JSON</span>
+              <span class="tag">HTTP / REST</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+        <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">03</span>
+          <h2 class="section-title">Projects</h2>
+          <div class="section-divider"></div>
+        </div>
+
+                <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="auth">Auth &amp; Security</button>
+          <button class="filter-btn" data-filter="websocket">Real-Time &amp; WebSockets</button>
+        </div>
+
+                <div class="projects-grid">
+
+                    <article class="project-card" data-category="auth" data-project="nexus-auth">
+            <div class="project-card-inner">
+              <div class="project-meta">
+                <span class="project-badge">FastAPI &bull; Vanilla JS &bull; Solo Project</span>
+                <span class="project-year">Featured</span>
+              </div>
+              <h3 class="project-title">Nexus &mdash; Auth Portal</h3>
+              <p class="project-summary">
+                A full-stack authentication portal with a FastAPI backend and plain HTML/CSS/JS frontend served via Uvicorn. Features cookie-based JWT auth via joserfc with HttpOnly, Argon2 password hashing, password strength meter, real-time session countdown, and CORS credentials support.
+              </p>
+              <div class="project-tags">
+                <span>FastAPI</span>
+                <span>joserfc JWT</span>
+                <span>SQLAlchemy</span>
+                <span>SQLite</span>
+                <span>Argon2</span>
+                <span>Pydantic v2</span>
+                <span>Cookie Auth</span>
+              </div>
+              <div class="project-footer">
+                <button class="btn-text open-modal-btn">
+                  View Full Specs &amp; Features
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+                    <article class="project-card" data-category="websocket" data-project="terminal-chat">
+            <div class="project-card-inner">
+              <div class="project-meta">
+                <span class="project-badge">FastAPI &bull; asyncio &bull; Solo Project</span>
+                <span class="project-year">Featured</span>
+              </div>
+              <h3 class="project-title">Private Chat App &mdash; Terminal WebSocket DM System</h3>
+              <p class="project-summary">
+                A terminal-based private DM application where users connect via WebSockets, select an online peer, and exchange messages in isolated rooms. Built with ConnectionManager registries, deterministic symmetric room IDs, asyncio coroutine synchronization, Redis, and pydantic-settings.
+              </p>
+              <div class="project-tags">
+                <span>FastAPI</span>
+                <span>WebSockets</span>
+                <span>async SQLAlchemy</span>
+                <span>Redis</span>
+                <span>SQLite (aiosqlite)</span>
+                <span>pydantic-settings</span>
+              </div>
+              <div class="project-footer">
+                <button class="btn-text open-modal-btn">
+                  View Full Specs &amp; Features
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+        <section class="section bg-subtle" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">04</span>
+          <h2 class="section-title">Experience &amp; Education</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="timeline">
+                    <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3>Independent Backend &amp; AI Developer</h3>
+                <span class="timeline-period">2025 &mdash; Present</span>
+              </div>
+              <p class="timeline-institution">Independent Engineering</p>
+              <ul class="focus-list" style="margin-bottom: 1rem;">
+                <li>Developed and deployed multiple backend and AI-powered applications using FastAPI.</li>
+                <li>Built reusable modules for authentication, CRUD operations, and validation, reducing development time by 25%.</li>
+                <li>Used Docker for containerization and consistent deployment across environments.</li>
+                <li>Followed clean architecture and version control best practices using Git.</li>
+              </ul>
+              <div class="timeline-highlights">
+                <span class="highlight-tag">FastAPI</span>
+                <span class="highlight-tag">Docker</span>
+                <span class="highlight-tag">Clean Architecture</span>
+                <span class="highlight-tag">Git</span>
+              </div>
+            </div>
+          </div>
+
+                    <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3>B.Tech — Electronics &amp; Telecommunication</h3>
+                <span class="timeline-period">2024 &mdash; 2028</span>
+              </div>
+              <p class="timeline-institution">Institute of Engineering &amp; Technology (IET), DAVV Indore</p>
+              <p class="timeline-desc">
+                Engaged in foundational engineering coursework spanning electronics, telecommunication, system design, data structures, and computer science fundamentals.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section class="section" id="certifications">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">05</span>
+          <h2 class="section-title">Certifications</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="certifications-grid">
+          <div class="cert-card">
+            <div class="cert-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <div>
+              <h3>FastAPI for Machine Learning</h3>
+              <p class="cert-issuer">CampusX</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+            </div>
+            <div>
+              <h3>PostgreSQL &amp; SQL Fundamentals</h3>
+              <p class="cert-issuer">Authenticated Competency</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect></svg>
+            </div>
+            <div>
+              <h3>Docker Fundamentals</h3>
+              <p class="cert-issuer">Authenticated Competency</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section class="section bg-subtle" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">06</span>
+          <h2 class="section-title">Get In Touch</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3 class="contact-subtitle">Let's connect and build together.</h3>
+            <p class="contact-text">
+              Passionate about building intelligent, scalable, and production-ready software solutions. Open to AI &amp; Backend engineering opportunities, API integration projects, and collaborations.
+            </p>
+
+            <div class="contact-details">
+              <div class="detail-item">
+                <div class="detail-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div>
+                  <span class="detail-label">Email</span>
+                  <div class="copy-email-row">
+                    <a href="mailto:vinaypratap4017@gmail.com" class="detail-value">vinaypratap4017@gmail.com</a>
+                    <button id="copy-email-btn" class="btn-copy" title="Copy email address">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Copy
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="detail-item">
+                <div class="detail-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div>
+                  <span class="detail-label">Phone &amp; Instant Messaging</span>
+                  <div class="copy-email-row">
+                    <a href="tel:+919179241217" class="detail-value">+91-9179241217</a>
+                    <a href="https://wa.me/919179241217" target="_blank" rel="noopener noreferrer" class="btn-copy" title="Chat on WhatsApp">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                      WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="social-row">
+              <a href="https://github.com/Vinay-1774" target="_blank" rel="noopener" class="btn btn-outline btn-sm">GitHub</a>
+              <a href="https://linkedin.com/in/vinaypratap1774" target="_blank" rel="noopener" class="btn btn-outline btn-sm">LinkedIn</a>
+            </div>
+          </div>
+
+                    <div class="contact-form-card">
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required placeholder="Jane Doe">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" required placeholder="jane@example.com">
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required placeholder="Backend Engineering Inquiry">
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required placeholder="Hello Vinay, I liked your resume and portfolio..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full">
+                Send Message
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <p>&copy; <span id="year">2026</span> Vinay Pratap Raghuwanshi. All rights reserved.</p>
+      </div>
+      <div class="footer-right">
+        <a href="#hero" class="back-to-top">
+          Back to top &uarr;
+        </a>
+      </div>
+    </div>
+  </footer>
+
+    <div class="modal-backdrop" id="project-modal" aria-hidden="true" role="dialog">
+    <div class="modal-window">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div class="modal-body" id="modal-content">
+              </div>
+    </div>
+  </div>
+
+    <div class="modal-backdrop" id="resume-modal" aria-hidden="true" role="dialog">
+    <div class="modal-window modal-lg">
+      <button class="modal-close" id="resume-close-btn" aria-label="Close modal">&times;</button>
+      <div class="modal-header-actions">
+        <h3 class="modal-title">Vinay Pratap Raghuwanshi &mdash; Official Resume</h3>
+        <button id="download-resume-file" class="btn btn-primary btn-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Print / Save PDF
+        </button>
+      </div>
+      <div class="modal-body resume-paper">
+        <header class="resume-header">
+          <h1>Vinay Pratap Raghuwanshi</h1>
+          <p class="resume-subtitle">AI Engineer &amp; Backend Developer</p>
+          <div class="resume-contact-meta">
+            <span>+91-9179241217</span> &bull;
+            <span>vinaypratap4017@gmail.com</span> &bull;
+            <span>github.com/Vinay-1774</span> &bull;
+            <span>linkedin.com/in/vinaypratap1774</span>
+          </div>
+        </header>
+
+        <hr class="resume-line">
+
+        <section class="resume-section">
+          <h2>Summary</h2>
+          <p>
+            AI &amp; Backend Developer with hands-on experience in building scalable REST APIs, real-time systems, and database-driven applications using Python, FastAPI, PostgreSQL, and WebSockets. Strong foundation in backend architecture, asynchronous programming, and system design, with a growing focus on LLMs, Retrieval-Augmented Generation (RAG), and AI-powered applications. Passionate about building intelligent, scalable, and production-ready software solutions.
+          </p>
+        </section>
+
+        <section class="resume-section">
+          <h2>Skills</h2>
+          <ul class="resume-bullet-list">
+            <li><strong>Programming:</strong> Python, C++, SQL, Java, Bash</li>
+            <li><strong>Backend:</strong> FastAPI, REST APIs, WebSockets, Async Programming, Pydantic, Uvicorn</li>
+            <li><strong>AI/LLM:</strong> Prompt Engineering, RAG (Learning), Embeddings, Vector Search Concepts, Semantic Search</li>
+            <li><strong>Databases:</strong> PostgreSQL, MySQL, SQLite, Redis</li>
+            <li><strong>Authentication &amp; Security:</strong> JWT, OAuth2, RBAC, Password Hashing, Session Management</li>
+            <li><strong>Tools &amp; Platforms:</strong> Git, GitHub, Docker, Linux, Postman, PgAdmin, Vercel, n8n, VS Code</li>
+            <li><strong>Libraries:</strong> SQLAlchemy, Alembic, NumPy, Pandas, Matplotlib</li>
+            <li><strong>Core Concepts:</strong> Data Structures &amp; Algorithms, OOP, API Design, Database Design, Database Indexing, Caching, System Design Fundamentals, Scalable Backend Architecture, Client-Server Architecture, JSON, HTTP, REST</li>
+          </ul>
+        </section>
+
+        <section class="resume-section">
+          <h2>Projects</h2>
+          <div class="resume-entry" style="margin-bottom: 1rem;">
+            <div class="entry-row">
+              <strong>Nexus &mdash; Auth Portal</strong>
+              <span>FastAPI &bull; Vanilla JS &bull; Solo Project</span>
+            </div>
+            <p class="entry-sub"><em>Tech Stack: FastAPI, joserfc JWT, SQLAlchemy, SQLite, Argon2, Pydantic v2, Cookie Auth</em></p>
+            <ul class="resume-bullet-list">
+              <li>Built a full-stack authentication portal with FastAPI backend and plain HTML/CSS/JS frontend, served directly via Uvicorn as static files.</li>
+              <li>Implemented secure cookie-based JWT authentication using joserfc with HttpOnly, SameSite=Lax, configurable expiry, and production Secure flag.</li>
+              <li>Used Argon2 via Passlib for password hashing and Pydantic v2 for API-level validation including mobile number, EmailStr, and password rules.</li>
+              <li>Added password strength meter, authentication tabs, toast notifications, real-time session countdown, and warning/critical states.</li>
+              <li>Configured CORS for same-origin and Live Server development with credentials support for cookie passthrough.</li>
+            </ul>
+          </div>
+
+          <div class="resume-entry">
+            <div class="entry-row">
+              <strong>Private Chat App &mdash; Terminal WebSocket DM System</strong>
+              <span>FastAPI &bull; asyncio &bull; Solo Project</span>
+            </div>
+            <p class="entry-sub"><em>Tech Stack: FastAPI, WebSockets, async SQLAlchemy, Redis, SQLite (aiosqlite), pydantic-settings</em></p>
+            <ul class="resume-bullet-list">
+              <li>Built a terminal-based private DM application where users connect via WebSocket, select an online peer, and exchange messages in isolated rooms.</li>
+              <li>Designed a ConnectionManager with separate user, lobby, and room registries for clean room isolation without cross-talk.</li>
+              <li>Implemented deterministic symmetric room IDs using sorted user pairs, preventing duplicate rooms for the same users.</li>
+              <li>Used asyncio.wait(FIRST_COMPLETED) to concurrently handle receive/send coroutines and cleanly cancel the remaining task on disconnect.</li>
+              <li>Added lobby-wide online-user broadcasts, duplicate username detection, and /leave and /quit commands for session management.</li>
+              <li>Configured Redis, database, and server URLs through pydantic-settings and environment variables without code changes.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="resume-section">
+          <h2>Experience</h2>
+          <div class="resume-entry">
+            <div class="entry-row">
+              <strong>Independent Backend &amp; AI Developer</strong>
+              <span>2025 &mdash; Present</span>
+            </div>
+            <ul class="resume-bullet-list">
+              <li>Developed and deployed multiple backend and AI-powered applications using FastAPI.</li>
+              <li>Built reusable modules for authentication, CRUD operations, and validation, reducing development time by 25%.</li>
+              <li>Used Docker for containerization and consistent deployment across environments.</li>
+              <li>Followed clean architecture and version control best practices using Git.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="resume-section">
+          <h2>Certifications</h2>
+          <ul class="resume-bullet-list">
+            <li>FastAPI for Machine Learning &mdash; CampusX</li>
+            <li>PostgreSQL &amp; SQL Fundamentals</li>
+            <li>Docker Fundamentals</li>
+          </ul>
+        </section>
+
+        <section class="resume-section">
+          <h2>Education</h2>
+          <div class="resume-entry">
+            <div class="entry-row">
+              <strong>B.Tech &mdash; Electronics &amp; Telecommunication</strong>
+              <span>2024 &mdash; 2028</span>
+            </div>
+            <p class="entry-sub">Institute of Engineering &amp; Technology (IET), DAVV Indore</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/script.js" type="module"></script>
+</body>
+</html>
