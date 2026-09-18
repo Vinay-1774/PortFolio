@@ -363,27 +363,6 @@ h1, h2, h3, h4 {
   max-width: 850px;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.35rem 0.85rem;
-  background-color: var(--bg-subtle);
-  border: 1px solid var(--border-color);
-  border-radius: 100px;
-  font-size: 0.825rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-}
-
-.status-indicator {
-  width: 7px;
-  height: 7px;
-  background-color: #22c55e;
-  border-radius: 50%;
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
-}
 
 .hero-title {
   font-family: var(--font-serif);
@@ -446,9 +425,7 @@ h1, h2, h3, h4 {
 }
 
 .about-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 3.5rem;
+  max-width: 860px;
 }
 
 .lead-text {
@@ -493,65 +470,6 @@ h1, h2, h3, h4 {
   font-size: 0.875rem;
   margin-bottom: 0;
   line-height: 1.5;
-}
-
-.sidebar-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.card-label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-light);
-  display: block;
-  margin-bottom: 0.75rem;
-}
-
-.card-title {
-  font-size: 1.25rem;
-  margin-bottom: 0.35rem;
-}
-
-.institution-name {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--text-muted);
-}
-
-.location-tag {
-  font-size: 0.85rem;
-  color: var(--text-light);
-  margin-top: 0.2rem;
-}
-
-.card-timeline {
-  display: inline-block;
-  margin-top: 0.75rem;
-  padding: 0.25rem 0.75rem;
-  background-color: var(--bg-subtle);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-main);
-}
-
-.card-divider {
-  border: 0;
-  height: 1px;
-  background-color: var(--border-color);
-  margin: 1.5rem 0;
-}
-
-.subcard-title {
-  font-size: 1.05rem;
-  margin-bottom: 0.2rem;
 }
 
 .focus-list {
@@ -1289,7 +1207,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 900px) {
   .hero-title { font-size: 3.2rem; }
-  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .skills-grid, .projects-grid, .certifications-grid { grid-template-columns: 1fr; }
   .principles-grid { grid-template-columns: 1fr; }
 }
