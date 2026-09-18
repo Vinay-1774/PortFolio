@@ -1,3 +1,5 @@
+const API_BASE_URL = 'https://portfolio-2a9m.onrender.com';
+
 const PROJECT_DATA = {
   'nexus-auth': {
     badge: 'FastAPI · Vanilla JS · Solo Project',
@@ -564,7 +566,7 @@ function initContactForm() {
     btn.innerHTML = 'Sending email...';
 
     try {
-      const res = await fetch('/api/send-email', {
+      const res = await fetch(`${API_BASE_URL}/api/send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, subject, message })

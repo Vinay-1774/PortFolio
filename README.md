@@ -1,14 +1,18 @@
 # Portfolio
 
-Minimal portfolio web application with a FastAPI backend and vanilla HTML/CSS/JS frontend.
+Personal portfolio site — static HTML/CSS/JS frontend served by a FastAPI backend that also handles the contact form (email via Resend).
 
 ## Setup
 
 ```bash
+git clone https://github.com/Vinay-1774/PortFolio.git
+cd PortFolio
+
 python3 -m venv .venv
-source .venv/bin/activate
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-cp .env.example .env
+
+# create a .env file in the project root with your config
 ```
 
 ## Run
@@ -17,31 +21,28 @@ cp .env.example .env
 python3 server.py
 ```
 
-The application will be available at `http://localhost:8000`.
+Serves the full site (frontend + `/api` routes) at `http://localhost:8000`.
 
-## Commands Cheat Sheet
+## Commands
 
-- **Start server**: `python3 server.py`
-- **Start with uvicorn**: `uvicorn server:app --reload --port 8000`
-- **Run with npm**: `npm run server`
-- **Interactive API Docs**: `http://localhost:8000/docs`
-- **Health Check**: `curl http://localhost:8000/api/health`
+| Command | Description |
+|---|---|
+| `python3 server.py` | Run backend + serve frontend |
+| `uvicorn server:app --reload --port 8000` | Run backend with auto-reload (dev) |
+| `npm run dev` | Vite dev server (frontend only) |
+| `npm run build` | Production frontend build |
+| `npm run preview` | Preview production build |
 
-## Project Structure
+## Project structure
 
 ```
-├── .env.example
-├── .gitignore
-├── index.html
-├── package.json
-├── README.md
-├── requirements.txt
-├── server.py
+PortFolio/
 ├── css/
 │   └── styles.css
-├── images/
-│   ├── logo-dark.png
-│   └── logo-light.png
-└── js/
-    └── script.js
+├── js/
+│   └── script.js
+├── index.html
+├── server.py
+├── requirements.txt
+└── package.json
 ```

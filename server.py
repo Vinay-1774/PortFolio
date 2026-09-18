@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     port: int = Field(default=8000, alias="PORT")
     host: str = Field(default="0.0.0.0", alias="HOST")
     environment: str = Field(default="production", alias="ENVIRONMENT")
-    allowed_origins: str = Field(default="https://vinaypratap.dev", alias="ALLOWED_ORIGINS")
+    allowed_origins: str = Field(default="https://port-folio-vert-three.vercel.app", alias="ALLOWED_ORIGINS")
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
